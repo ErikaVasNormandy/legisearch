@@ -11,3 +11,7 @@ councildoc.html
 *.bak
 .*
 static_web/*.json
+lib
+bin
+include
+pyvenv.cfg
