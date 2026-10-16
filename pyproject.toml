@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+name = "legisearch"
+description = "Legistar Utils"
+dynamic = ["version"]
+readme = "README.md"
+requires-python = ">= 3.9"
+dependencies = [
+    "aiosqlite",
+    "flask[async]",
+    "httpx",
+    "icalendar",
+    "python-dateutil",
+    "sqlalchemy[asyncio]",
+]
+
+[project.optional-dependencies]
+test = [
+    "flake8",
+    "pytest",
+    "types-python-dateutil",
+]
+build = [
+    "build",
+    "wheel",
+]
+
+[project.scripts]
+legisearch = "legisearch.cli:main"
+
+[tool.setuptools]
+packages = ["legiscal", "legisearch"]
+
+[tool.setuptools.dynamic]
+version = {attr = "legiscal.__main__.__version__"}
+
+[mypy]
+check_untyped_defs = true
